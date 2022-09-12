@@ -3,7 +3,6 @@ import { UserDetails } from "../MainComponent";
 import { useContext } from "react";
 const ChildofComponent=()=> {
 var FetchedData=useContext(UserDetails)
-console.log(FetchedData,"data")
 return (
     <>
     <h2>This is Child of child component,Here we are accessing data which was passed to parent 

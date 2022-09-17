@@ -1,17 +1,24 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { UserDetails } from "../MainComponent";
 import { useContext } from "react";
-const ChildComponent=()=> {
-var FetchedData=useContext(UserDetails)
-return (
+import { useLocation } from "react-router-dom";
+const ChildComponent = () => {
+  var FetchedData = useContext(UserDetails)
+  const location = useLocation()
+  useEffect(() => {
+    FetchedData.Update()
+  }, [])
+
+  return (
     <>
-    <h2>This is Child component,Here we are accessing data which was passed to parent 
-     Component as props.</h2>
-     <label>Name</label>
-      : {FetchedData.name}<br /><br />
-     <label>Age</label>
-      : {FetchedData.Age}
+      <h2>This is Child component,Here we are accessing data which was passed to parent
+        Component as props.</h2>
+      <label>Name</label>
+      : {FetchedData.state.name}<br /><br />
+      <label>Age</label>
+      : {FetchedData.state.Age}<br />
+      Location : Your Route Location is : {location.pathname.replace('/', 'Home ')}
     </>
-)
+  )
 }
 export default ChildComponent;
